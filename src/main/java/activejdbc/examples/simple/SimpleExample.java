@@ -10,12 +10,12 @@ public class SimpleExample {
 
        System.getProperties().list(System.out);
 
-        Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/test", "root", "p@ssw0rd");
+        Base.open("oracle.jdbc.OracleDriver", "jdbc:oracle:thin:@127.0.0.1:1521:XE", "pwmb", "pwmb");
 
         createEmployee();
         logger.info("=========> Created employee:");
         selectEmployee();
-        updateEmployee();
+       /* updateEmployee();
         logger.info("=========> Updated employee:");
         selectAllEmployees();
         deleteEmployee();
@@ -27,7 +27,7 @@ public class SimpleExample {
         deleteAllEmployees();
         logger.info("=========> Deleted all employees:");
         selectAllEmployees();
-
+*/
         Base.close();
     }
 
@@ -40,6 +40,7 @@ public class SimpleExample {
 
     private static void selectEmployee() {
         Employee e = Employee.findFirst("first_name = ?", "John");
+        System.out.println(e.toString());
         logger.info(e.toString());
     }
 
